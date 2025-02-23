@@ -232,17 +232,14 @@ class Summation(TensorOp):
     def gradient(self, out_grad, node):
         ### BEGIN YOUR SOLUTION
         a = node.inputs[0]
-        old_shape = out_grad.shape
-        new_shape = [1] * len(a.shape)
-        j = 0
-        for i in range(len(a.shape)):
-            if j < len(old_shape) and a.shape[i] == old_shape[j]:
-                new_shape[i] = old_shape[j]
-                j += 1
-
+        new_shape = list(a.shape)
+        axes = self.axes if self.axes else range(len(new_shape))
+        for i in axes:
+            new_shape[i] = 1
         grad_a = broadcast_to(reshape(out_grad, new_shape), a.shape)
         return grad_a
         ### END YOUR SOLUTION
+
 
 
 def summation(a, axes=None):
