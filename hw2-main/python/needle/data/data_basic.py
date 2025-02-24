@@ -55,17 +55,25 @@ class DataLoader:
         self.shuffle = shuffle
         self.batch_size = batch_size
         if not self.shuffle:
-            self.ordering = np.array_split(np.arange(len(dataset)), 
+            self.ordering = np.array_split(np.arange(len(dataset)),
                                            range(batch_size, len(dataset), batch_size))
 
     def __iter__(self):
         ### BEGIN YOUR SOLUTION
-        raise NotImplementedError()
+        if self.shuffle:
+            order = np.arange(len(self.dataset))
+            np.random.shuffle(order)
+            self.ordering = np.array_split(order, range(self.batch_size, len(self.dataset), self.batch_size))
+        self.current_index = 0
         ### END YOUR SOLUTION
         return self
 
     def __next__(self):
         ### BEGIN YOUR SOLUTION
-        raise NotImplementedError()
+        if self.current_index >= len(self.ordering):
+            raise StopIteration
+        batches = [Tensor(x) for x in self.dataset[self.ordering[self.current_index]]]
+        self.current_index += 1
+        return batches
         ### END YOUR SOLUTION
 
