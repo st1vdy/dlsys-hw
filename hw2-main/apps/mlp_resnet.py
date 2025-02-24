@@ -51,33 +51,7 @@ def MLPResNet(
 def epoch(dataloader, model, opt=None):
     np.random.seed(4)
     ### BEGIN YOUR SOLUTION
-    if opt is None:
-        model.eval()
-    else:
-        model.train()
-    criterion = nn.SoftmaxLoss()
-    num_acc, num_total, loss_average, num_batches = 0, 0, 0, 0
-
-    for i, batch in enumerate(dataloader):
-        x, y = batch
-        out = model(x)
-        if opt:
-            opt.reset_grad()
-            loss = criterion(out, y)
-            loss_average += float(loss.detach().numpy())
-            loss.backward()
-            opt.step()
-        else:
-            loss = criterion(out, y)
-            loss_average += float(loss.detach().numpy())
-
-        num_acc += (out.numpy().argmax(1) == y.numpy()).sum()
-        num_total += y.shape[0]
-        num_batches += 1
-
-    acc = num_acc / num_total
-    loss_average /= num_batches
-    return 1 - acc, loss_average
+    raise NotImplementedError()
     ### END YOUR SOLUTION
 
 
@@ -92,25 +66,7 @@ def train_mnist(
 ):
     np.random.seed(4)
     ### BEGIN YOUR SOLUTION
-    train_set = ndl.data.MNISTDataset(
-        os.path.join(data_dir, 'train-images-idx3-ubyte.gz'),
-        os.path.join(data_dir, 'train-labels-idx1-ubyte.gz'),
-    )
-    test_set = ndl.data.MNISTDataset(
-        os.path.join(data_dir, 't10k-images-idx3-ubyte.gz'),
-        os.path.join(data_dir, 't10k-labels-idx1-ubyte.gz'),
-    )
-    train_loader = ndl.data.DataLoader(train_set, batch_size=batch_size, shuffle=True)
-    test_loader = ndl.data.DataLoader(test_set, batch_size=batch_size, shuffle=False)
-    model = MLPResNet(784, hidden_dim)
-    opt = optimizer(model.parameters(), lr=lr, weight_decay=weight_decay)
-
-    for e in range(epochs):
-        train_err, train_loss  = epoch(train_loader, model, opt)
-        test_err, test_loss = epoch(test_loader, model, None)
-
-    # Returns a tuple of the training error, training loss, test error, test loss computed in the last epoch of training
-    return train_err, train_loss, test_err, test_loss
+    raise NotImplementedError()
     ### END YOUR SOLUTION
 
 
