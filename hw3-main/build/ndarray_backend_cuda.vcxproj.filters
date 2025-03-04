@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Suzukaze\dy\notes\dlsys\dlsys-hw\hw3-main\src\ndarray_backend_cuda.cu">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Suzukaze\dy\notes\dlsys\dlsys-hw\hw3-main\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="C:\Suzukaze\dy\notes\dlsys\dlsys-hw\hw3-main\build\CMakeFiles\ndarray_backend_cuda.dir\src\$(Configuration)\ndarray_backend_cuda_generated_ndarray_backend_cuda.cu.obj">
+      <Filter>Object Files</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Object Files">
+      <UniqueIdentifier>{862290EE-6D52-30A1-8792-4907C72ECA59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4E02F361-31B9-342D-ACBB-21CC5D31420F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

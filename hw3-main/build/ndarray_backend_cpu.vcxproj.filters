@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Suzukaze\dy\notes\dlsys\dlsys-hw\hw3-main\src\ndarray_backend_cpu.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Suzukaze\dy\notes\dlsys\dlsys-hw\hw3-main\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4E02F361-31B9-342D-ACBB-21CC5D31420F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

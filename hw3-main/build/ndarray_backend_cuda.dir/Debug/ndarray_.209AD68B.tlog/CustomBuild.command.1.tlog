@@ -1,0 +1,26 @@
+^C:\SUZUKAZE\DY\NOTES\DLSYS\DLSYS-HW\HW3-MAIN\SRC\NDARRAY_BACKEND_CUDA.CU
+setlocal
+cd C:\Suzukaze\dy\notes\dlsys\dlsys-hw\hw3-main\build\CMakeFiles\ndarray_backend_cuda.dir\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Suzukaze/dy/notes/dlsys/dlsys-hw/hw3-main/build/CMakeFiles/ndarray_backend_cuda.dir/src/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -D verbose:BOOL=OFF -D "CCBIN:PATH=C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools/MSVC/14.36.32532/bin/Hostx64/x64" -D build_configuration:STRING=Debug -D generated_file:STRING=C:/Suzukaze/dy/notes/dlsys/dlsys-hw/hw3-main/build/CMakeFiles/ndarray_backend_cuda.dir/src/Debug/ndarray_backend_cuda_generated_ndarray_backend_cuda.cu.obj -D generated_cubin_file:STRING=C:/Suzukaze/dy/notes/dlsys/dlsys-hw/hw3-main/build/CMakeFiles/ndarray_backend_cuda.dir/src/Debug/ndarray_backend_cuda_generated_ndarray_backend_cuda.cu.obj.cubin.txt -P C:/Suzukaze/dy/notes/dlsys/dlsys-hw/hw3-main/build/CMakeFiles/ndarray_backend_cuda.dir/src/ndarray_backend_cuda_generated_ndarray_backend_cuda.cu.obj.Debug.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\SUZUKAZE\DY\NOTES\DLSYS\DLSYS-HW\HW3-MAIN\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Suzukaze/dy/notes/dlsys/dlsys-hw/hw3-main -BC:/Suzukaze/dy/notes/dlsys/dlsys-hw/hw3-main/build --check-stamp-file C:/Suzukaze/dy/notes/dlsys/dlsys-hw/hw3-main/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
