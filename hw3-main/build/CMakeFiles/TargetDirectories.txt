@@ -1,4 +1,4 @@
-C:/Suzukaze/dy/notes/dlsys/dlsys-hw/hw3-main/build/CMakeFiles/ndarray_backend_cpu.dir
-C:/Suzukaze/dy/notes/dlsys/dlsys-hw/hw3-main/build/CMakeFiles/ndarray_backend_cuda.dir
-C:/Suzukaze/dy/notes/dlsys/dlsys-hw/hw3-main/build/CMakeFiles/ALL_BUILD.dir
-C:/Suzukaze/dy/notes/dlsys/dlsys-hw/hw3-main/build/CMakeFiles/ZERO_CHECK.dir
+/home/dongye/instance_segm_122/dy/dlsys/hw3-main/build/CMakeFiles/ndarray_backend_cpu.dir
+/home/dongye/instance_segm_122/dy/dlsys/hw3-main/build/CMakeFiles/ndarray_backend_cuda.dir
+/home/dongye/instance_segm_122/dy/dlsys/hw3-main/build/CMakeFiles/edit_cache.dir
+/home/dongye/instance_segm_122/dy/dlsys/hw3-main/build/CMakeFiles/rebuild_cache.dir

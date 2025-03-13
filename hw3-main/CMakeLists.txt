@@ -1,13 +1,5 @@
-cmake_minimum_required(VERSION 3.10)
-
-# Project setup
+cmake_minimum_required(VERSION 3.5)
 project(needle C CXX)
-
-# 指定 pybind11 的路径
-set(CMAKE_PREFIX_PATH "C:/Users/YJY/.conda/envs/whisperx/lib/site-packages/pybind11/share/cmake/pybind11")
-set(CUDA_TOOLKIT_ROOT_DIR "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6")
-
-cmake_policy(SET CMP0146 OLD)
 
 # find correct version of Python
 execute_process(COMMAND python3-config --prefix

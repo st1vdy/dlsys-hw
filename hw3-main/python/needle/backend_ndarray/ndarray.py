@@ -203,8 +203,8 @@ class NDArray:
         """Return true if array is compact in memory and internal size equals product
         of the shape dimensions"""
         return (
-            self._strides == self.compact_strides(self._shape)
-            and prod(self.shape) == self._handle.size
+                self._strides == self.compact_strides(self._shape)
+                and prod(self.shape) == self._handle.size
         )
 
     def compact(self):
@@ -247,7 +247,10 @@ class NDArray:
         """
 
         ### BEGIN YOUR SOLUTION
-        raise NotImplementedError()
+        if self.size != prod(new_shape):
+            raise ValueError()
+        return NDArray.make(shape=new_shape, strides=NDArray.compact_strides(new_shape), device=self.device,
+                            handle=self._handle)
         ### END YOUR SOLUTION
 
     def permute(self, new_axes):
@@ -272,7 +275,10 @@ class NDArray:
         """
 
         ### BEGIN YOUR SOLUTION
-        raise NotImplementedError()
+        return self.as_strided(
+            shape=tuple(self._shape[i] for i in new_axes),
+            strides=tuple(self._strides[i] for i in new_axes)
+        )
         ### END YOUR SOLUTION
 
     def broadcast_to(self, new_shape):
@@ -296,7 +302,16 @@ class NDArray:
         """
 
         ### BEGIN YOUR SOLUTION
-        raise NotImplementedError()
+        new_strides = list(self._strides)
+        for i in range(len(new_shape)):
+            if new_shape[i] != self._shape[i] and self._shape[i] != 1:
+                raise AssertionError()
+            if self._shape[i] == 1:
+                new_strides[i] = 0
+        return self.as_strided(
+            shape=new_shape,
+            strides=tuple(new_strides),
+        )
         ### END YOUR SOLUTION
 
     ### Get and set elements
@@ -363,7 +378,19 @@ class NDArray:
         assert len(idxs) == self.ndim, "Need indexes equal to number of dimensions"
 
         ### BEGIN YOUR SOLUTION
-        raise NotImplementedError()
+        # import loguru
+        # loguru.logger.info(f'{idxs}')
+        new_shape = [(i.stop - i.start + i.step - 1) // i.step for i in idxs]
+        offset = [i.start * j for (i, j) in zip(idxs, self._strides)]
+        offset = np.array(offset).sum()
+        new_strides = tuple([i.step * j for (i, j) in zip(idxs, self._strides)])
+        return NDArray.make(
+            shape=new_shape,
+            strides=new_strides,
+            offset=offset,
+            device=self._device,
+            handle=self._handle
+        )
         ### END YOUR SOLUTION
 
     def __setitem__(self, idxs, other):
@@ -502,7 +529,7 @@ class NDArray:
 
         # if the matrix is aligned, use tiled matrix multiplication
         if hasattr(self.device, "matmul_tiled") and all(
-            d % self.device.__tile_size__ == 0 for d in (m, n, p)
+                d % self.device.__tile_size__ == 0 for d in (m, n, p)
         ):
 
             def tile(a, tile):
@@ -568,7 +595,6 @@ class NDArray:
         return out
 
 
-
 def array(a, dtype="float32", device=None):
     """Convenience methods to match numpy a bit more closely."""
     dtype = "float32" if dtype is None else dtype
@@ -612,5 +638,3 @@ def tanh(a):
 
 def sum(a, axis=None, keepdims=False):
     return a.sum(axis=axis, keepdims=keepdims)
-
-
